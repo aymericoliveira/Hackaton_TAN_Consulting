@@ -26,7 +26,7 @@ Réseau : `10.10.2.0/24`
 Utilisation : Réseau interne des utilisateurs du site de Marseille.
 
 **Pourquoi un masque /24 ?**
->Même si le nombre d’utilisateurs est plus restreint à Marseille, l’usage d’un masque /24 permet de conserver une cohérence d’architecture et d’anticiper de futures évolutions ou ajouts d’équipements.
+>Même si le nombre d’utilisateurs est plus restreint à Marseille, l’usage d’un masque `/24` permet de conserver une cohérence d’architecture et d’anticiper de futures évolutions ou ajouts d’équipements.
 
 ## 🌐 DMZ Marseille
 Réseau : `10.10.20.0/24`
@@ -81,4 +81,4 @@ Ce réseau ne nécessite que 3 adresses : une pour chaque pare-feu (actif et pas
 
 # 📈 Schéma de l'infrastructure 
 
-![schema_infra](./images/schema_img/schema_infrastructure.png)
+![schema_infra](../images/schema_img/schema_infrastructure.png)

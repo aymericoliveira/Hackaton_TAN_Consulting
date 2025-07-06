@@ -34,42 +34,42 @@ Vérification de la RAM
 Proxmox affiche un pourcentage de la RAM allouée à pfSense, mais ce n’est pas la RAM réellement utilisée.
 Pour vérifier la consommation exacte, il faut se rendre sur le tableau de bord pfSense.
 
-![suricata](./images/suricata_img/installation.png)
+![suricata](../images/suricata_img/installation.png)
 
 ## Installation de Suricata
 Accès : System > Package Management > Package Installer
 
-![suricata](./images/suricata_img/image(1).png)  
+![suricata](../images/suricata_img/image(1).png)  
 
 Une fois l’installation terminée, configurer Suricata sur l’interface WAN.
 
 - Activation : OK  
 - Interface : WAN
 
-![suricata](./images/suricata_img/image(3).png) 
+![suricata](../images/suricata_img/image(3).png) 
 
 ## 🔐 Configuration initiale
 Nous devons surveiller les connexions et bloquer les IP provenant de pays spécifiques : Russie, Ukraine, Chine, Corée du Nord.
 
 Pour bloquer automatiquement les menaces, cocher Block Offenders.
 
-![suricata](./images/suricata_img/image(4).png) 
+![suricata](../images/suricata_img/image(4).png) 
 
 Vérification des IP bloquées via :
 `Services > Suricata > Blocked Hosts` 
 
-![suricata](./images/suricata_img/image(5).png) 
+![suricata](../images/suricata_img/image(5).png) 
 
 Dans la partie Categories, sélectionner les catégories souhaitées (liées aux règles WAN).
 
-![suricata](./images/suricata_img/image(6).png) 
+![suricata](../images/suricata_img/image(6).png) 
 
 > Les règles peuvent être désactivées en cas de faux positifs trop fréquents.
 
 ## Qu’est-ce que la réputation IP ?
 La réputation IP est une évaluation basée sur le comportement passé d’une adresse IP (ex : spam, malwares, scans de ports).
 
-![suricata](./images/suricata_img/image(7).png) 
+![suricata](../images/suricata_img/image(7).png) 
 
 Les scores sont attribués par des bases reconnues comme :
 
@@ -79,7 +79,7 @@ Les scores sont attribués par des bases reconnues comme :
 
 👉 **Activation fortement recommandée.**
 
-![suricata](./images/suricata_img/image(8).png)
+![suricata](../images/suricata_img/image(8).png)
 
 # 📥 Ajout de la liste d’IP malveillantes
 Deux options :
@@ -92,7 +92,7 @@ Nous avons utilisé OTX-Suricata (outil open source).
 **Étapes :**
 1. Générer une clé API sur otx.alienvault.com
 
-![suricata](./images/suricata_img/image(9).png) 
+![suricata](../images/suricata_img/image(9).png) 
 
 2. Installer OTXv2 (module nécessaire - Python requis).
 
@@ -110,12 +110,12 @@ Importer les fichiers dans :
 
 > ⚠️ Attention : j'ai eu besoin d'installer Python avant pour pouvoir installer OTXv2
 
-![suricata](./images/suricata_img/otxv2_1.png) 
+![suricata](../images/suricata_img/otxv2_1.png) 
 
 5. Téléchargement des IPs réputation / réputation.list et catégories.txt
 Création d'un dossier `output` dans le dossier otx-suricata
 
-![suricata](./images/suricata_img/otxv2_2.png) 
+![suricata](../images/suricata_img/otxv2_2.png) 
 
 ## 📂 La structure du fichier reputation.list :
 
@@ -123,7 +123,7 @@ Création d'un dossier `output` dans le dossier otx-suricata
 - **Catégorie** (référencée dans `categories.txt`)  
 - **Score** de réputation (de 1 à 127)
 
-![suricata](./images/suricata_img/image(10).png) 
+![suricata](../images/suricata_img/image(10).png) 
 
 ## ➕ Ajout de la règle OTX
 Ajout dans le fichier `otx_iprap.rules.`
@@ -137,7 +137,7 @@ alert ip $HOME_NET any -> [OTX_IPS] any (msg:"OTX - Connexion vers IP malveillan
 
 > Cette règle génère une alerte si une machine interne tente de se connecter à une IP malveillante avec un score de menace > 30.
 
-![suricata](./images/suricata_img/image(11).png) 
+![suricata](../images/suricata_img/image(11).png) 
 
 ## 🚫 Blocage des pays à risque
 
@@ -153,26 +153,26 @@ drop ip [RU,CN,UA,KP] any -> $HOME_NET any (msg:"BLOCK - Connexions entrantes de
 - **$HOME_NET** : Réseau local (WAN ici)  
 - **geoip:src** : Filtrage basé sur la géolocalisation IP
 
-![suricata](./images/suricata_img/image(12).png) 
+![suricata](../images/suricata_img/image(12).png) 
 
 ## ✅ Vérifications finales
 Vérifier que Suricata fonctionne via :
 `Status > Services`
 
-![suricata](./images/suricata_img/image(13).png) 
+![suricata](../images/suricata_img/image(13).png) 
 
 Pour consulter les alertes :
 `Services > Suricata > Alerts`
 Sélectionner l’interface WAN.
 
-![suricata](./images/suricata_img/image(14).png) 
-![suricata](./images/suricata_img/8.png)   
+![suricata](../images/suricata_img/image(14).png) 
+![suricata](../images/suricata_img/8.png)   
 
 Vérification de la base GeoIP
 Sur pfSense, vérifier que la base MaxMind est bien en place.
 
-![suricata](./images/suricata_img/image(15).png) 
-![suricata](./images/suricata_img/4.png) 
+![suricata](../images/suricata_img/image(15).png) 
+![suricata](../images/suricata_img/4.png) 
 
 ## 🔄 Déploiement sur le firewall de Paris (HA)
 Répétition de la procédure pour le firewall de Paris (mode HA).
@@ -205,7 +205,7 @@ Dans Logs Mgmt de Suricata :
 Allocation de 10 Go pour les logs Suricata sans contrainte.
 > Suricata conserve les logs jusqu’à saturation des 10 Go, puis supprime les plus anciens.
 
-![suricata](./images/suricata_img/size_limit.png) 
+![suricata](../images/suricata_img/size_limit.png) 
 
 ## 🔧 Spécificité Marseille vs Paris
 Seule différence : Paramétrage des logs (espace disque)

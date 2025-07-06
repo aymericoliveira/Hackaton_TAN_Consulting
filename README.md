@@ -1,18 +1,19 @@
 ## 🗺️ Plan du repository
 ```bash
 Hackaton_TAN_Consulting/  
-├── README.md                # Présentation principale du lab   
-├── Infrastructure.md          # Description de l’architecture (schéma) et du plan d'adressage IP      
-├── VPN_Site-to-Site.md         # Installation d'un VPN Site-to-Site Paris <-> Marseille
-├── VPN_Client-to-Site.md         # (Documentation prochainement en ligne) Installation d'un VPN Client-to-Site connexion au site Paris
-├── Poxy_Squid.md         # Installation d'un Proxy transparant sur le site Paris
-├── IDS_IPS_Suricata.md      # Installation d'un IDS/IPS sur les sites de Paris et Marseille avec configuration du cluster actif/passif
-├── DMZ.md      # (Documentation prochainement en ligne) Mise en palce d'une DMZ pour le déploiement d'un intranet Site Marseille
-├── images/                  # Captures d’écran et schémas    
-│   ├── ipsec_img            # Captures d’écran installation & tests VPN IPsec     
-│   ├── schema_img            # Image de notre schéma réseau
-│   └── suricata_img         # Captures d’écran installation & tests IDS/IPS  
-└── LICENSE                  # Licence MIT  
+├── README.md                  # Présentation principale du lab 
+├── Docs/                      # Présentation principale du lab 
+│   ├── DMZ.md                 # (Documentation prochainement en ligne) Mise en palce d'une DMZ pour le déploiement d'un intranet Site Marseille
+│   ├── IDS_IPS_Suricata.md    # Installation d'un IDS/IPS sur les sites de Paris et Marseille avec configuration du cluster actif/passif
+│   ├── Infrastructure.md      # Description de l’architecture (schéma) et du plan d'adressage IP
+│   ├── Poxy_Squid.md          # Installation d'un Proxy transparant sur le site Paris 
+│   ├── VPN_Client-to-Site.md  # (Documentation prochainement en ligne) Installation d'un VPN Client-to-Site connexion au site Paris 
+│   └── VPN_Site-to-Site.md    # Installation d'un VPN Site-to-Site Paris <-> Marseille    
+├── images/                    # Captures d’écran et schémas    
+│   ├── ipsec_img              # Captures d’écran installation & tests VPN IPsec     
+│   ├── schema_img             # Image de notre schéma réseau
+│   └── suricata_img           # Captures d’écran installation & tests IDS/IPS  
+└── LICENSE                    # Licence MIT  
 ```
 
 
