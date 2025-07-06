@@ -9,8 +9,11 @@ Hackaton_TAN_Consulting/
 │   ├── Poxy_Squid.md          # Installation d'un Proxy transparant sur le site Paris 
 │   ├── VPN_Client-to-Site.md  # (Documentation prochainement en ligne) Installation d'un VPN Client-to-Site connexion au site Paris 
 │   └── VPN_Site-to-Site.md    # Installation d'un VPN Site-to-Site Paris <-> Marseille    
-├── images/                    # Captures d’écran et schémas    
-│   ├── ipsec_img              # Captures d’écran installation & tests VPN IPsec     
+├── images/                    # Captures d’écran et schémas   
+│   ├── client-to-site_img     # Capture d'écran installation vpn 
+│   ├── dmz_img                # Captures d'écran de la mise en place de la DMZ et du servuer NGNIX
+│   ├── ipsec_img              # Captures d’écran installation & tests VPN IPsec   
+│   ├── proxy_transparant_img     # Capture d'écran de la mise en place du proxy
 │   ├── schema_img             # Image de notre schéma réseau
 │   └── suricata_img           # Captures d’écran installation & tests IDS/IPS  
 └── LICENSE                    # Licence MIT  
